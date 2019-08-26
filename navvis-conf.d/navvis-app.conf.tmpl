@@ -1,0 +1,12 @@
+upstream web {
+    least_conn;
+    __SERVERS__
+}
+
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://web;
+    }
+}
